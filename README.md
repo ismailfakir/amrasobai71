@@ -1,4 +1,5 @@
 # amrasobai-project
+### project url: https://amrasobai71.firebaseapp.com/
 
 ## Project setup
 ```
@@ -28,20 +29,27 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### firebase deploy
-see https://medium.com/@rachidsakara/how-to-deploy-vue-js-applications-with-firebase-hosting-40cfa7f724e4
+## firebase deployment
 
+### install firebase cli
+```
 npm install -g firebase-tools
+```
+### build the project
+```
 npm run build
+```
 
-within the root folder create a new file called .firebaserc with the following content: .firebaserc
+### within the root folder create a new file called .firebaserc with the following content:
+```
 {
   "projects":{
     "default" : "your-firebase-project-id"
   }
 }
-
-create another configuration file called firebase.json, and then add the following content to it:
+```
+### create another configuration file called firebase.json, and then add the following content to it:
+```
 {
 	"hosting":{
 		"public":"dist",
@@ -59,8 +67,16 @@ create another configuration file called firebase.json, and then add the followi
 
 	}
 }
-
+```
+### login to firebase
+```
 firebase login
+```
+### deploy the app
+```
 firebase deploy
-
+```
+### build & deploy to firebase
+```
 npm run build && firebase deploy
+```
