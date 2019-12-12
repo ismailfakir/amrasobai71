@@ -19,7 +19,9 @@ const APP_ICONS = {
     /**headers icons */
     signout:'fas fa-sign-out-alt',
     tools:'fas fa-tools',
-    user:'fas fa-user'
+    user:'fas fa-user',
+    signin:'fas fa-sign-in-alt',
+    register:'fas fa-user-plus'
 };
 
 Vue.use(Vuetify);

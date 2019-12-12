@@ -7,7 +7,7 @@
       color="green lighten-1"
     >
     
-      <v-list dense>
+      <v-list dense v-if="isAuthenticated">
         <template v-for="item in items">
    
        <v-row
@@ -94,7 +94,7 @@
         isOpen: null,
         mini: false,
         items: [
-        { icon: '$home', text: 'Home' ,link: '/'},
+        { icon: '$home', text: 'Home' ,link: '/home'},
         { icon: '$users', text: 'Users' ,link: '/users'},
         { icon: '$foods', text: 'Food Items' ,link: '/food'},
         { icon: '$perticipants', text: 'Perticipants' ,link: '/perticipants'},
@@ -116,6 +116,11 @@
       
       ],
       }
+    },
+    computed: {
+        isAuthenticated() {
+            return this.$store.getters.isAuthenticated;
+        }
     },
   }
 </script>

@@ -3,33 +3,30 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'; // Ensur
 import Vue from 'vue';
 import App from './App.vue';
 import vuetify from './plugins/vuetify';
-import VueRouter from 'vue-router';
-import Login from './components/Login';
-import Register from './components/Register';
-import Food from './components/Food';
-import Notfound from './components/Notfound';
-import Users from './components/Users';
-import Perticipants from './components/Perticipants';
 
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-  mode: 'history',
-  base: __dirname,
-  routes: [
-    { path: '/login', component: Login },
-    { path: '/perticipants', component: Perticipants },
-    { path: '/users', component: Users },
-    { path: '/Register', component: Register},
-    { path: '/Food', component: Food },
-    { path: '*', component: Notfound },
-  ]
-});
-
+import firebase from 'firebase';
+import store from './store';
+import router from './router';
 
 Vue.config.productionTip = false;
 
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBWsL2VOB0uqhTCnleP9pZc3tQkUvLuWes",
+  authDomain: "amrasobai71.firebaseapp.com",
+  databaseURL: "https://amrasobai71.firebaseio.com",
+  projectId: "amrasobai71",
+  storageBucket: "amrasobai71.appspot.com",
+  messagingSenderId: "253632726900",
+  appId: "1:253632726900:web:cd70fa184d672d35078e21",
+  measurementId: "G-NZH7KTGMY8"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
 new Vue({
+  store,
   vuetify,
   router,
   render: h => h(App)
