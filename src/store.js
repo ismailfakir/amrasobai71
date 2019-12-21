@@ -8,12 +8,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    isLoading: false,
   },
 
   getters: {
     isAuthenticated(state) {
       return state.user !== null && state.user !== undefined;
+    },
+    isLoading(state){
+      return state.isLoading;
     }
   },
 
@@ -23,6 +27,9 @@ export default new Vuex.Store({
     },
     setIsAuthenticated(state, payload) {
       state.isAuthenticated = payload;
+    },
+    setLoading(state,payload){
+      state.isLoading=payload;
     }
   },
 
@@ -32,6 +39,7 @@ export default new Vuex.Store({
       firebase.auth().signInWithEmailAndPassword(email, password).then(user => {
         commit('setUser', user);
         commit('setIsAuthenticated', true);
+        commit('setLoading',false);
         router.push('/home');
       }).catch(() => {
         commit('setUser', null);

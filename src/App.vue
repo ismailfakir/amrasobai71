@@ -34,6 +34,10 @@ import Menues from './components/Menues';
 export default {
   name: 'App',
 
+  beforeCreate() {
+    //console.warn(process.env.VUE_APP_apiKey);
+ },
+
   components: {
     //Login,
     //Register,

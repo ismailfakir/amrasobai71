@@ -1,9 +1,10 @@
 <template>
-    <v-container fill-height>
-        <v-layout align-center justify-center>
-            <v-flex xs12 sm8 md4>
+    <v-container fill-height="fill-height">
+        <v-layout align-center="align-center" justify-center="justify-center">
+            <Loader></Loader>
+            <v-flex xs12="xs12" sm8="sm8" md4="md4">
                 <v-card class="elevation-12">
-                    <v-toolbar dark color="primary">
+                    <v-toolbar dark="dark" color="primary">
                         <v-toolbar-title>Login Form</v-toolbar-title>
                     </v-toolbar>
                     <v-card-text>
@@ -15,10 +16,8 @@
                                 type="email"
                                 v-model="email"
                                 :rules="emailRules"
-                                required
-                                data-cy="signinEmailField"
-                            >
-                            </v-text-field>
+                                required="required"
+                                data-cy="signinEmailField"></v-text-field>
                             <v-text-field
                                 prepend-icon="lock"
                                 name="password"
@@ -27,9 +26,7 @@
                                 data-cy="signinPasswordField"
                                 v-model="password"
                                 :rules="passwordRules"
-                                required
-                            >
-                            </v-text-field>
+                                required="required"></v-text-field>
                         </v-form>
                     </v-card-text>
                     <v-card-actions>
@@ -38,9 +35,7 @@
                             color="primary"
                             :disabled="!valid"
                             @click="submit"
-                            data-cy="signinSubmitBtn"
-                            >Login</v-btn
-                        >
+                            data-cy="signinSubmitBtn">Login</v-btn >
                     </v-card-actions>
                 </v-card>
             </v-flex>
@@ -49,36 +44,39 @@
 </template>
 
 <script>
-export default {
-    name: 'Login',
-    data() {
-        return {
-            valid: false,
-            email: '',
-            password: '',
-            emailRules: [
-                v => !!v || 'E-mail is required',
-                v => /.+@.+/.test(v) || 'E-mail must be valid'
-            ],
-            passwordRules: [
-                v => !!v || 'Password is required',
-                v =>
-                    v.length >= 6 ||
-                    'Password must be greater than 6 characters'
-            ]
-        };
-    },
-    methods: {
-        submit() {
-            if (this.$refs.form.validate()) {
-                this.$store.dispatch('userLogin', {
-                    email: this.email,
-                    password: this.password
-                });
+    import Loader from './Loader';
+    export default {
+        name: 'Login',
+        components: {
+            Loader
+        },
+        data() {
+            return {
+                valid: false,
+                email: 'ismail7043@yahoo.com',
+                password: '123456',
+                emailRules: [
+                    v => !!v || 'E-mail is required',
+                    v => /.+@.+/.test(v) || 'E-mail must be valid'
+                ],
+                passwordRules: [
+                    v => !!v || 'Password is required',
+                    v => v.length >= 6 || 'Password must be greater than 6 characters'
+                ]
+            };
+        },
+        methods: {
+            submit() {
+                if (this.$refs.form.validate()) {
+                    this.$store.commit('setLoading',true);
+                    this.$store.dispatch('userLogin', {
+                        email: this.email,
+                        password: this.password
+                    });
+                }
             }
         }
-    }
-};
+    };
 </script>
 
-<style scoped></style>
+<style scoped="scoped"></style>

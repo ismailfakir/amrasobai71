@@ -12,50 +12,16 @@
         single-line
         hide-details
       ></v-text-field>
-      <v-dialog v-model="dialog" max-width="500px">
-          <template v-slot:activator="{ on }">
-            <v-btn color="success" dark="" class="mb-2" v-on="on">New Category</v-btn>
-          </template>
-          <v-card>
-            <v-card-title>
-              <span style="margin-bottom: 40px;" class="headline">{{ formTitle }}</span>
-            </v-card-title>
-
-            <v-card-text>
-              <v-container>
-                <v-row>
-                  <v-col cols="12" sm="6" md="6">
-                    <v-text-field style="width: 440px;" v-model="editedItem.id" label="Category Id:" outlined=""></v-text-field>
-                    <v-text-field style="width: 440px;" v-model="editedItem.name" label="Category name:" outlined=""></v-text-field>
-                  </v-col>
-                </v-row>
-              </v-container>
-            </v-card-text>
-
-            <v-card-actions>
-              <div class="flex-grow-1"></div>
-                <div v-if="dialogDelete === true">
-                  <v-btn color="blue darken-1" text="" @click="close">Cancel</v-btn>
-                  <v-btn color="blue darken-1" text="" @click="remove">Delete</v-btn>
-                </div>
-                <div v-else-if="dialogDelete === false">
-                  <v-btn color="blue darken-1" text="" @click="close">Cancel</v-btn>
-                  <v-btn color="blue darken-1" text="" @click="save">Save</v-btn>
-                </div>
-            </v-card-actions>
-
-          </v-card>
-        </v-dialog>
     </v-card-title>
   <v-data-table :headers="headers" :items="categories" :items-per-page="5" :search="search">
     <template v-slot:top="">
       <v-toolbar flat="" color="white">
-        <h1>perticipants</h1>
+      
         <div class="flex-grow-1"></div>
-
+        
         <v-dialog v-model="dialog" max-width="500px">
           <template v-slot:activator="{ on }">
-            <v-btn color="success" dark="" class="mb-2" v-on="on">New Category</v-btn>
+            <v-btn class="ma-2" tile dark color="success" v-on="on"><v-icon left>$add</v-icon>New</v-btn>
           </template>
           <v-card>
             <v-card-title>
@@ -66,7 +32,7 @@
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="6" md="6">
-                    <v-text-field style="width: 440px;" v-model="editedItem.id" label="Category Id:" outlined=""></v-text-field>
+                    <v-text-field :rules="[v => !!v || 'Item is required']" required style="width: 440px;" v-model="editedItem.id" label="Category Id:" outlined=""></v-text-field>
                     <v-text-field style="width: 440px;" v-model="editedItem.name" label="Category name:" outlined=""></v-text-field>
                   </v-col>
                 </v-row>

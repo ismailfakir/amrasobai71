@@ -11,7 +11,7 @@
         hide-details
       ></v-text-field>
     </v-card-title>
-    <v-data-table
+    <v-data-table loading loading-text="Loading... Please wait"
       :headers="headers"
       :items="desserts"
       :search="search"

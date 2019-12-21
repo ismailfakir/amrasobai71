@@ -21,7 +21,10 @@ const APP_ICONS = {
     tools:'fas fa-tools',
     user:'fas fa-user',
     signin:'fas fa-sign-in-alt',
-    register:'fas fa-user-plus'
+    register:'fas fa-user-plus',
+    add:'fas fa-plus',
+    edit:'fas fa-edit',
+    delete:'fas fa-trash-alt',
 };
 
 Vue.use(Vuetify);

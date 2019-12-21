@@ -11,7 +11,7 @@ import router from './router';
 Vue.config.productionTip = false;
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+/* const firebaseConfig = {
   apiKey: "AIzaSyBWsL2VOB0uqhTCnleP9pZc3tQkUvLuWes",
   authDomain: "amrasobai71.firebaseapp.com",
   databaseURL: "https://amrasobai71.firebaseio.com",
@@ -20,10 +20,21 @@ const firebaseConfig = {
   messagingSenderId: "253632726900",
   appId: "1:253632726900:web:cd70fa184d672d35078e21",
   measurementId: "G-NZH7KTGMY8"
+}; */
+
+//If you are using Vue cli 3, only variables that start with VUE_APP_ will be loaded.
+const firebaseConfig = {
+  apiKey: process.env.VUE_APP_apiKey,
+  authDomain: process.env.VUE_APP_authDomain,
+  databaseURL: process.env.VUE_APP_databaseURL,
+  projectId: process.env.VUE_APP_projectId,
+  storageBucket: process.env.VUE_APP_storageBucket,
+  messagingSenderId: process.env.VUE_APP_messagingSenderId,
+  appId: process.env.VUE_APP_appId,
+  measurementId: process.env.VUE_APP_measurementId
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
 
 new Vue({
   store,

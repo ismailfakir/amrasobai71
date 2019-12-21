@@ -78,6 +78,11 @@
           </v-list-item>
         </template>
       </v-list>
+      <template v-slot:append>
+        <div class="pa-2">
+          <v-btn block to="/test">Test</v-btn>
+        </div>
+      </template>
     </v-navigation-drawer>
 </template>
 <script>
@@ -98,7 +103,7 @@
         { icon: '$users', text: 'Users' ,link: '/users'},
         { icon: '$foods', text: 'Food Items' ,link: '/food'},
         { icon: '$perticipants', text: 'Perticipants' ,link: '/perticipants'},
-        { icon: '$news', text: 'News',link: '/' },
+        { icon: '$news', text: 'News',link: '/news' },
         { icon: '$venue', text: 'Venue' ,link: '/'},
         { icon: '$contacts', text: 'Contact Us' ,link: '/'},
 

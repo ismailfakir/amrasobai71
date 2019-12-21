@@ -7,6 +7,8 @@ import Notfound from './components/Notfound';
 import Users from './components/Users';
 import Home from './components/Home';
 import Perticipants from './components/Perticipants';
+import News from './components/News';
+import Test from './components/Test';
 //import auth from './auth';
 import store from './store.js';
 
@@ -30,7 +32,9 @@ const router = new VueRouter({
       { path: '/perticipants', component: Perticipants,meta: {authRequired: true} },
       { path: '/users', component: Users,meta: {authRequired: true} }, 
       { path: '/Food', component: Food,meta: {authRequired: true} },
-      { path: '/home', component: Home,meta: {authRequired: true} }
+      { path: '/home', component: Home,meta: {authRequired: true} },
+      { path: '/news', component: News,meta: {authRequired: true} },
+      { path: '/test', component: Test,meta: {authRequired: false} }
       /* 
       { path: '/perticipants', component: Perticipants,beforeEnter: requireAuth },
       { path: '/users', component: Users,beforeEnter: requireAuth }, 
